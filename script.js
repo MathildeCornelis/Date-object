@@ -33,7 +33,24 @@
         if (e.key === "Enter") {
         let now = new Date();
         let x = new Date(inputDiv.value);
-        console.log(x);
         document.getElementById('reponse').innerHTML = Math.round((now.getTime() - x.getTime()) / (1000 * 60 * 60 * 24)) + ' day' + (Math.round((now.getTime() - x.getTime()) / (1000 * 60 * 60 * 24)) > 1 ? "s" : "") + ' have passed since ' + inputDiv.value + '.';
+        };
+    };
+
+/*Exercise 3*/
+    let divAjout = document.getElementById('80');
+    let heureActuelle = new Date();
+    heureActuelle.setHours(heureActuelle.getHours() + 80000);
+    divAjout.innerHTML = 'In 80,000 hours we will be the ' + (heureActuelle.toLocaleString('en-GB', { timeZone: 'UTC' }));
+
+    let inputFutur = document.getElementById('futur');
+    inputFutur.addEventListener('keyup', showfuturTime)
+    function showfuturTime(e) {
+        if (e.key === "Enter") {
+        let span = document.getElementById('output');
+        let date = new Date(inputFutur.value);
+        date.setHours(date.getHours() + 80000);
+        console.log(date);
+        span.innerHTML = 'In 80,000 hours we will be the ' + (date.toLocaleString('en-GB', { timeZone: 'UTC' }));
         };
     };
