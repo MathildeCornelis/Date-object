@@ -41,16 +41,15 @@
     let divAjout = document.getElementById('80');
     let heureActuelle = new Date();
     heureActuelle.setHours(heureActuelle.getHours() + 80000);
-    divAjout.innerHTML = 'In 80,000 hours we will be the ' + (heureActuelle.toLocaleString('en-GB', { timeZone: 'UTC' }));
+    divAjout.innerHTML = 'In 80,000 hours we will be the ' + heureActuelle
 
-    let inputFutur = document.getElementById('futur');
-    inputFutur.addEventListener('keyup', showfuturTime)
-    function showfuturTime(e) {
-        if (e.key === "Enter") {
-        let span = document.getElementById('output');
-        let date = new Date(inputFutur.value);
-        date.setHours(date.getHours() + 80000);
-        console.log(date);
-        span.innerHTML = 'In 80,000 hours we will be the ' + (date.toLocaleString('en-GB', { timeZone: 'UTC' }));
-        };
-    };
+    let span = document.getElementById('output');
+    let input = document.getElementById('futur');
+    input.addEventListener('keyup', showInputFutur)
+    function showInputFutur() {
+        heureActuelle = new Date();
+        let bla = input.value;
+        heureActuelle.setTime(heureActuelle.getTime() + (bla * 1000 * 60 * 60));
+        span.innerHTML = heureActuelle;
+    }
+    
